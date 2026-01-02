@@ -20,11 +20,18 @@ export const sohneBreit = localFont({
   ],
 });
 
+export const metadata = {
+  other: {
+    "google-site-verification":
+      "pjDL48b1IMVte3ajtoeTdKOHwJspD1mho6KFXM6pKfk",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <head>
-        <title>DDROP</title>
+        <title>Cloudrive</title>
       </head>
       <body className={helveticaNeue.className}>
         <Provider>{children}</Provider>
