@@ -15,12 +15,13 @@ export const sohneBreit = localFont({
   src: [
     {
       path: "../public/fonts/SohneBreit-Halbfett.woff2",
-      weight: "bold",
+      weight: "700",
     },
   ],
 });
 
 export const metadata = {
+  title: "Cloudrive",
   other: {
     "google-site-verification":
       "pjDL48b1IMVte3ajtoeTdKOHwJspD1mho6KFXM6pKfk",
@@ -29,10 +30,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
-      <head>
-        <title>Cloudrive</title>
-      </head>
+    <html lang="en">
       <body className={helveticaNeue.className}>
         <Provider>{children}</Provider>
       </body>
