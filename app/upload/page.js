@@ -65,13 +65,17 @@ const UploadPage = () => {
     body.append("file", file);
 
     try {
-      await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
+      const response = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
         method: "POST",
         body: body,
         headers: {
           Authorization: `Bearer ${session.accessToken}`,
         },
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       setResultMessage(
         <motion.p
@@ -87,6 +91,7 @@ const UploadPage = () => {
         </motion.p>
       );
     } catch (error) {
+      console.error('Upload error:', error);
       setResultMessage(
         <motion.p
           initial={{ opacity: 0, y: 20, x: "-50%" }}
