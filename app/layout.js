@@ -1,6 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
-import Provider from "../components/Providers";
+import Provider from "../components/Provider";
 
 const helveticaNeue = localFont({
   src: "../public/fonts/HelveticaNeue-Light.woff2",
