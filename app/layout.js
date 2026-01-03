@@ -1,6 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
-import Providers from "../components/Providers";
+import Provider from "../components/Providers";
 
 const helveticaNeue = localFont({
   src: "../public/fonts/HelveticaNeue-Light.woff2",
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={helveticaNeue.className}>
-        <Providers>{children}</Providers>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
