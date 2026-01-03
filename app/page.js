@@ -2,20 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useSession, signIn } from "next-auth/react";
-import googleIcon from "@/public/google.svg";
 import Image from "next/image";
+import googleIcon from "@/public/google.svg";
 import { redirect } from "next/navigation";
-import localFont from "next/font/local";
 import styles from "./page.module.css";
-
-const sohneBreit = localFont({
-  src: [
-    {
-      path: "../public/fonts/SohneBreit-Halbfett.woff2",
-      weight: "700",
-    },
-  ],
-});
 
 export default function Home() {
   const { data: session } = useSession();
@@ -37,7 +27,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 35 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0, 0, 0, 0.8], delay: 0.5 }}
-        className={`${sohneBreit.className} ${styles.h1}`}
+        className={styles.h1}
       >
         CLOUDRIVE
       </motion.h1>
@@ -50,14 +40,15 @@ export default function Home() {
           className={`border ${styles.content}`}
         >
           <p>
-            Try it now by sign in with Google below, and you&apos;ll see the power of this ;)
+            Try it now by sign in with Google below, and you&apos;ll see the power
+            of this ;)
           </p>
 
           <button
             onClick={() => signIn("google", { callbackUrl: "/upload" })}
-            className={`button ${styles.buttonWithIcon} ${sohneBreit.className}`}
+            className={`button ${styles.buttonWithIcon}`}
           >
-            <Image src={googleIcon} width={22} height={22} alt="" />
+            <Image src={googleIcon} width={22} height={22} alt="Google" />
             Login with Google now!
           </button>
         </motion.div>
