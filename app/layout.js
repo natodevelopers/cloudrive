@@ -1,8 +1,8 @@
 import "./globals.css";
 import localFont from "next/font/local";
-import Provider from "../components/Provider";
+import Providers from "../components/Providers";
 
-const sohneBreit = localFont({
+const helveticaNeue = localFont({
   src: "../public/fonts/HelveticaNeue-Light.woff2",
   weight: "300",
 });
@@ -18,8 +18,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={sohneBreit.className}>
-        <Provider>{children}</Provider>
+      <body className={helveticaNeue.className}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
