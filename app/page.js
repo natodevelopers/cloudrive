@@ -23,7 +23,7 @@ export default function Home() {
             transition={{ duration: 1, ease: [0, 0, 0, 0.8] }}
             className={styles.welcome}
           >
-            Welcome to
+            Hi! This is
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 35 }}
@@ -31,7 +31,7 @@ export default function Home() {
             transition={{ duration: 0.5, ease: [0, 0, 0, 0.8], delay: 0.5 }}
             className={`${sohneBreit.className} ${styles.h1}`}
           >
-            DDROP
+            CLOUDRIVE
           </motion.h1>
           <div className={styles.contentWrapper}>
             <motion.div
@@ -41,14 +41,14 @@ export default function Home() {
               className={`border ${styles.content}`}
             >
               <p>
-                Just about the easiest way to upload files to your google drive. Login to unleash the power of the D.
+                Try it now by sign in with Google below, and you&#39;ll  see the power of this ;)
               </p>
               <button
                 onClick={() => signIn("google", { callbackUrl: "/upload" })}
                 className={`button ${styles.buttonWithIcon} ${sohneBreit.className}`}
               >
                 <Image src={googleIcon} width={22} height={22} alt="" />
-                Login with google
+                Login with Google now!
               </button>
             </motion.div>
           </div>
