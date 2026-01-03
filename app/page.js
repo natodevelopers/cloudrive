@@ -5,8 +5,17 @@ import { useSession, signIn } from "next-auth/react";
 import googleIcon from "@/public/google.svg";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { sohneBreit } from "./layout";
+import localFont from "next/font/local";
 import styles from "./page.module.css";
+
+const sohneBreit = localFont({
+  src: [
+    {
+      path: "../public/fonts/SohneBreit-Halbfett.woff2",
+      weight: "700",
+    },
+  ],
+});
 
 export default function Home() {
   const { data: session } = useSession();
@@ -14,46 +23,45 @@ export default function Home() {
   if (session) redirect("/upload");
 
   return (
-    <>
-      {!session && (
-        <main className={styles.main}>
-          <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0, 0, 0, 0.8] }}
-            className={styles.welcome}
+    <main className={styles.main}>
+      <motion.p
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: [0, 0, 0, 0.8] }}
+        className={styles.welcome}
+      >
+        Hi! This is
+      </motion.p>
+
+      <motion.h1
+        initial={{ opacity: 0, y: 35 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0, 0, 0, 0.8], delay: 0.5 }}
+        className={`${sohneBreit.className} ${styles.h1}`}
+      >
+        CLOUDRIVE
+      </motion.h1>
+
+      <div className={styles.contentWrapper}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
+          className={`border ${styles.content}`}
+        >
+          <p>
+            Try it now by sign in with Google below, and you&apos;ll see the power of this ;)
+          </p>
+
+          <button
+            onClick={() => signIn("google", { callbackUrl: "/upload" })}
+            className={`button ${styles.buttonWithIcon} ${sohneBreit.className}`}
           >
-            Hi! This is
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 35 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0, 0, 0, 0.8], delay: 0.5 }}
-            className={`${sohneBreit.className} ${styles.h1}`}
-          >
-            CLOUDRIVE
-          </motion.h1>
-          <div className={styles.contentWrapper}>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
-              className={`border ${styles.content}`}
-            >
-              <p>
-                Try it now by sign in with Google below, and you&#39;ll  see the power of this ;)
-              </p>
-              <button
-                onClick={() => signIn("google", { callbackUrl: "/upload" })}
-                className={`button ${styles.buttonWithIcon} ${sohneBreit.className}`}
-              >
-                <Image src={googleIcon} width={22} height={22} alt="" />
-                Login with Google now!
-              </button>
-            </motion.div>
-          </div>
-        </main>
-      )}
-    </>
+            <Image src={googleIcon} width={22} height={22} alt="" />
+            Login with Google now!
+          </button>
+        </motion.div>
+      </div>
+    </main>
   );
 }
